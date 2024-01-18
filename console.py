@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""this is the airbnb console"""
 
 import cmd
 import models
