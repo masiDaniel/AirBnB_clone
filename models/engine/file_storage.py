@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines the FileStorage class."""
 import json
+from os.path import exists
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -41,7 +42,7 @@ class FileStorage:
         if exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r', encoding='utf-8') as file:
                 obj_dict = json.load(file)
-        for key, value in obj_dict.items():
-                class_name = value["__class__"]
-                obj = self.classes()[class_name](**value)
-                FileStorage.__objects[key] = obj
+                for key, value in obj_dict.items():
+                    class_name = value["__class__"]
+                    obj = self.classes()[class_name](**value)
+                    FileStorage.__objects[key] = obj

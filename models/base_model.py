@@ -6,13 +6,14 @@ from datetime import datetime
 
 time_format = '%Y-%m-%dT%H:%M:%S.%f'
 
+
 class BaseModel:
     """definition of base model class"""
-    
+
     def __init__(self, *args, **kwargs):
         """initializing the class"""
 
-        if kwargs :
+        if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
                     continue
@@ -25,18 +26,18 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
-    
+
     def __str__(self):
         """return string representation of class"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
-    
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                    self.id, self.__dict__)
 
     def save(self):
         """current time is set to updated_at"""
         from models import storage
-        self.updated_at= datetime.now()
+        self.updated_at = datetime.now()
         storage.save()
-    
+
     def to_dict(self):
         """dictonary containing all the keys and values"""
         obj_dict = self.__dict__.copy()

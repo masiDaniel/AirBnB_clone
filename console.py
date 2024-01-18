@@ -11,13 +11,14 @@ from models.review import Review
 from models.state import State
 from models.amenity import Amenity
 
-classes = {"BaseModel": BaseModel, "User": User,"Place": Place, "City": City, "State": State,
-        "Amenity": Amenity, "Review": Review}
+classes = {"BaseModel": BaseModel, "User": User,
+           "Place": Place, "City": City, "State": State,
+           "Amenity": Amenity, "Review": Review}
+
 
 class HBNBCommand(cmd.Cmd):
     """the console itself"""
     prompt = '(hbnb) '
-
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
@@ -26,7 +27,7 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """EOF command to exit the program"""
         return True
-   
+
     def emptyline(self):
         """does nothing"""
         pass
@@ -42,7 +43,6 @@ class HBNBCommand(cmd.Cmd):
             print(new_instance.id)
         except Exception as e:
             print("** class doesn't exist **")
-    
 
     def do_show(self, arg):
         """shows an instance based on the class name and id"""
@@ -60,7 +60,6 @@ class HBNBCommand(cmd.Cmd):
                 print(obj[obj_key])
             else:
                 print("** no instance found **")
-    
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id"""
@@ -78,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
                 models.storage.save()
             else:
                 print("** no instance found **")
-    
+
     def do_all(self, arg):
         """prints all string representations of instances"""
         args = arg.split()
@@ -94,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
                 if type(obj).__name__ == args[0]:
                     obj_list.append(str(obj))
             print(obj_list)
-    
+
     def do_update(self, arg):
         """Updates an instance based on the class name and id"""
         args = arg.split()
@@ -114,8 +113,6 @@ class HBNBCommand(cmd.Cmd):
                 models.storage.all()[obj_key].__dict__[args[2]] = args[3]
             else:
                 print("** no instance found **")
-
-
 
 
 if __name__ == '__main__':
