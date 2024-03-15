@@ -6,7 +6,6 @@ import json
 import unittest
 from models.base_model import BaseModel
 from uuid import UUID
-from os.path import exists
 
 
 class TestBaseModel(unittest.TestCase):
