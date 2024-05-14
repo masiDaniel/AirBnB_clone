@@ -36,4 +36,4 @@ class TestUser(unittest.TestCase):
         self.assertTrue(type(u.id), str)
         self.assertTrue(type(u.created_at), datetime.datetime)
         self.assertTrue(type(u.updated_at), datetime.datetime)
-        
+  
